@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue.js</title>
+    <style>
+        .diff{
+            background-color: #fcc;
+        }
+        .outer_line{
+            width: 300px;
+            border: 1px solid #000;
+            margin: auto 50px;
+            padding: 20px;
+        }
+        .inner_line{
+            border: 1px solid #000;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <form>
+            <label for="nameA">氏名：</label>
+            <input type="text" id="nameA" v-model="myNameA" />
+        </form>
+        <div>こんにちわ、{{ myNameA }}さん！</div>
+        <form>
+            <p>お使いのOSは？</p>
+            <label for="windows">Windows</label>
+            <input type="checkbox" id="windows" value="Windows" v-model="osA" />
+            <label for="linux">Linux</label>
+            <input type="checkbox" id="linux" value="Linux" v-model="osA" />
+            <label for="macos">macOS</label>
+            <input type="checkbox" id="macos" value="macOS" v-model="osA" />
+            <p>回答：{{ osA }}</p>
+        </form>
+        <form>
+            <label for="osB">お使いのOSは？</label><br>
+            <select id="osB" v-model="osB">
+                <option value="">OSを選択してください</option>
+                <option>Windows</option>
+                <option>Linux</option>
+                <option>macOS</option>
+            </select>
+            <p>回答：{{ osB }}</p>
+        </form>
+        <form>
+            <label fpr="million">百万：</label>
+            <input type="radio" id="million" v-model="unit" @change="onchange" :value="{name: '百万', size: '1,000,000'}" /><br>
+            <label fpr="billion">十億：</label>
+            <input type="radio" id="billion" v-model="unit" @change="onchange" :value="{name: '十億：', size: '1,000,000,000'}" /><br>
+            <label fpr="trillion">一兆：</label>
+            <input type="radio" id="trillion" v-model="unit" @change="onchange" :value="{name: '一兆', size: '1,000,000,000,000'}" /><br>
+        </form>
+        <form>
+            <input ref="upfile" type="file" @change="onchangeFile" />
+        </form>
+        <div>{{ message }}</div>
+        <form>
+            <label for="temperature">サウナの温度：</label>
+            <input type="text" id="temperature" v-model.number="temperature" @change="onchangeNum" />
+        </form>
+        <form>
+            <label for="memo">メモ：</label>
+            <input type="text" id="memo" v-model.trim="memo" @change="onchangeTrim" />
+        </form>
+        <form>
+            <label for="nameB">氏名：</label>
+            <input type="text" id="nameB" v-model.lazy="myNameB" />
+        </form>
+        <div>こんにちわ、{{ myNameB }}さん！</div>
+        <form>
+            <label for="mail">mail:</label>
+            <textarea id="mail" :value="mails.join(';')" @input="mails=$event.target.value.split(';')"></textarea>
+        </form>
+        <ul>
+            <li v-for="mail in mails">
+                {{ mail }}
+            </li>
+        </ul>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+    <script>window.Vue ||document.write('<script src="../lib/vue.js"><\/script>');</script>
+    <script src="js/form.js"></script>
+</body>
+</html>

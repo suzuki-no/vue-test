@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue.js</title>
+    <style>
+        .diff{
+            background-color: #fcc;
+        }
+        .outer_line{
+            width: 300px;
+            border: 1px solid #000;
+            margin: auto 50px;
+            padding: 20px;
+        }
+        .inner_line{
+            border: 1px solid #000;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <button v-on:click="onclick">click</button>
+        <p>{{ message }}</p>
+
+        <form>
+            <div>
+                <label>on-focus/on-blur</label>
+                <input type="text" @focus="onfocus" @blur="onblur" :style="{backgroundColor : onfocusColor ? '#ccc': '#fff'}" />
+            </div>
+            <div>
+                <label>on-change</label>
+                <input type="text" @change="onchange" :value="onchangetext" :class="onchangeColor ? 'diff' : '' "/>
+            </div>
+            <div>
+                <p>on-mouseenter/on-mouseleave</p>
+                <img :src="pathA" alt="log" @mouseenter="onmouseenter" @mouseleave="onmouseleave"/>
+            </div>
+            <div>
+                <p>on-mouseenter/on-mouseleave と on-mouseover/on-mouseout</p>
+                <div id="outerA" class="outer_line" @mouseenter="onmuseinA" @mouseleave="onmouseoutA">
+                    外（outer）
+                    <p id="innerA" class="inner_line" >内（inner）</p>
+                </div>
+                <div v-html="resultA"></div>
+                <div id="outerB" class="outer_line" @mouseover="onmuseinB" @mouseleave="onmouseoutB">
+                    外（outer）
+                    <p id="innerB" class="inner_line" >内（inner）</p>
+                </div>
+                <div v-html="resultB"></div>
+            </div>
+            <div>
+                <p>on-error</p>
+                <img :src="pathB" alt="log" @error="onerror"/>
+            </div>
+        </form>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+    <script>window.Vue ||document.write('<script src="../lib/vue.js"><\/script>');</script>
+    <script src="js/event.js"></script>
+</body>
+</html>

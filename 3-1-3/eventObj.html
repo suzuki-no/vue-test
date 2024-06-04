@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue.js</title>
+    <style>
+        .diff{
+            background-color: #fcc;
+        }
+        .outer_line{
+            width: 300px;
+            border: 1px solid #000;
+            margin: auto 50px;
+            padding: 20px;
+        }
+        .inner_line{
+            border: 1px solid #000;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div>
+            <label>event_obj</label>
+            <button v-on:click="onclickA">click!!</button>
+        </div>
+        <div>
+            <p>event_point</p>
+            <div id="main" class="outer_line" @mousemove="onmousemove">
+                <p>screen: {{ screenX }}/{{ screenY }}</p>
+                <p>page: {{ pageX }}/{{ pageY }}</p>
+                <p>client: {{ clientX }}/{{ clientY }}</p>
+                <p>offset: {{ offsetX }}/{{ offsetY }}</p>
+            </div>
+        </div>
+        <div>
+            <label>event_args</label>
+            <button @click="onclickB('welcome!', $event)">click!!</button>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+    <script>window.Vue ||document.write('<script src="../lib/vue.js"><\/script>');</script>
+    <script src="js/eventObj.js"></script>
+</body>
+</html>
