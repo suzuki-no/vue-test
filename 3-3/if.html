@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue.js</title>
+</head>
+<body>
+    <div id="app">
+        <div>
+            <p>if構文</p>
+            <form>
+                <label for="show">表示/非表示</label>
+                <input type="checkbox" id="show" v-model="showVal" />
+            </form>
+            <div id="panel" v-if="showVal">
+                <h3>RSSフィードについて</h3>
+                <div>test...test...test...test...</div>
+            </div>
+            <div v-else>現在、非表示です。</div>
+        </div>
+        <div>
+            <p>else if構文</p>
+            <form>
+                <label for="holiday">祝日</label><br>
+                <select id="holiday" v-model="holidayVal">
+                    <option value="">祝日を選択してください。</option>
+                    <option value="new">元日</option>
+                    <option value="child">こどもの日</option>
+                    <option value="culture">文化の日</option>
+                    <option value="labor">勤労感謝の日</option>
+                    <option value="ather">誕生日</option>
+                </select>
+                <div v-if="holidayVal==='new'">1月1日。年の初めを祝う。</div>
+                <div v-else-if="holidayVal==='child'">5月5日。こどもの人格を重んじ...</div>
+                <div v-else-if="holidayVal==='culture'">11月3日。自由と平和を愛し...</div>
+                <div v-else-if="holidayVal==='labor'">11月23日。勤労をとうとび...</div>
+                <div v-else-if="holidayVal==='ather'">〇月〇日。誕生日。</div>
+                <div v-else>何も選択されていません。</div>
+            </form>
+        </div>
+        <div>
+            <p>key</p>
+            <fieldset>
+                <legend>支払方法</legend>
+                クレジットカード：
+                <input type="radio" name="pay" value="credit" v-model="payVal"/>
+                銀行振込：
+                <input type="radio" name="pay" value="bank" v-model="payVal"/>
+                <br>
+                <div v-if="payVal==='credit'">
+                    カード番号：
+                    <input type="text" key="credit"/>
+                </div>
+                <div v-else-if="payVal==='bank'">
+                    口座番号：
+                    <input type="text" key="bank">
+                </div>
+            </fieldset>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+    <script>window.Vue ||document.write('<script src="../lib/vue.js"><\/script>');</script>
+    <script src="js/if.js"></script>
+</body>
+</html>
