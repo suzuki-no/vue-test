@@ -61,7 +61,8 @@ let app = new Vue({
     },
     methods: {
         onclick: function(){
-            Vue.set(this.list, 1, '茶パジャマ');
+            //Vue.set(this.list, 1, '茶パジャマ');
+            this.list.shift();
         },
     },
 });

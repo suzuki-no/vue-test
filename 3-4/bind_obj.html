@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue.js</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
+</head>
+<body>
+    <div id="app">
+        <form>
+            <label for="memo">memo:</label>
+            <input type="text" id="memo" v-bind="attrs" />
+            <div v-bind:text-content.prop="text"></div>
+            <svg height="150" width="200" v-bind:view-box.camel="'0 0 4 3'">...</svg>
+            <select v-model="attr">
+                <option value="height">高さ</option>
+                <option value="width">幅</option>
+            </select>:
+            <input type="text" size="5" v-model="size" /><br>
+            <img src="../lib/figure_aisatsu_akusyu_kyousyu.png" v-bind:[attr]="size" />
+        </form>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+    <script>window.Vue ||document.write('<script src="../lib/vue.js"><\/script>');</script>
+    <script src="js/bind_obj.js"></script>
+</body>
+</html>

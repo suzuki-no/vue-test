@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue.js</title>
+    <link rel="stylesheet" href="./css/html.css"/>
+</head>
+<body>
+    <div id="app">
+        <p><pre><code>{{ messageA }}</code></pre></p>
+        <p v-html="messageA"></p>
+        <form>
+            <label for="name">Name:</label>
+            <input type="text" id="name" v-model="name" />
+        </form>
+        <div v-once>はじめまして、{{ name }}さん。</div>
+        <div>はじめまして、{{ name }}さん。</div>
+        <div :style="{backgroundColor: 'Aqua', fontSize: '1.5em'}">Hello! everyone</div>
+        <div :style="[color, size]">Hello! everyone</div>
+        <a :style="{'tap-highlight-color': 'Aqua'}" :href="url">
+            {{ url }}
+        </a>
+        <div class="small" :class="{colord, frame: isChange}">Hello! everyone</div>
+        <div class="small" :class="{colorClass, frameClass}">Hello! everyone</div>
+        <p v-cloak>{{ messageB }}</p>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+    <script>window.Vue ||document.write('<script src="../lib/vue.js"><\/script>');</script>
+    <script src="js/html.js"></script>
+</body>
+</html>

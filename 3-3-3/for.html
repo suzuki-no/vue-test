@@ -47,7 +47,7 @@
                 <input type="button" value="変更" @click="onclick"/>
             </form>
             <ul>
-                <li v-for="item in list">{{ item }}</li>
+                <li v-for="item in list" :key="item">{{ item }}</li>
             </ul>
         </div>
     </div>
